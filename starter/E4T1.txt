@@ -1,0 +1,9 @@
+
+
+# Identify 2-3 changes that can be made to our environment to prevent an ssh brute force attack from the internet.
+Answer:
+1. Disable ssh password authentication
+2. Implement rate limiting by limiting the number of SSH connection attempts from a single IP address within a specific time frame
+3. Use a Bastion Host as the medium between the internet and the vpc network
+
+# Neither instance should have had access to the secret recipes bucket, in the even that instance API credentials were compromised how could we have prevented access to sensitive data.

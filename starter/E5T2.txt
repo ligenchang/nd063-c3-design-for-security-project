@@ -1,0 +1,39 @@
+# Identify tools that will allow you to do the following:
+
+## Scan infrastructure as code templates
+Checkov: Checkov is an open-source static analysis tool for infrastructure as code. 
+
+
+### Example vulnerability
+Check: "Ensure all data stored in the S3 bucket is securely encrypted at rest"
+	PASSED for resource: aws_s3_bucket.foo-bucket
+	File: /example.tf:1-25
+
+##Scan AMI’s or containers for OS vulnerabilities
+Trivy is a comprehensive and versatile security scanner. Trivy has scanners that look for security issues, and targets where it can find those issues.
+
+Targets (what Trivy can scan):
+
+Container Image
+Filesystem
+Git Repository (remote)
+Virtual Machine Image
+Kubernetes
+AWS
+
+### Example vulnerability
+Total: 1 (HIGH: 1, CRITICAL: 0)
+
+┌─────────────────────────────────────────────────┬────────────────┬──────────┬───────────────────┬───────────────┬─────────────────────────────────────────────┐
+│                     Library                     │ Vulnerability  │ Severity │ Installed Version │ Fixed Version │                    Title                    │
+├─────────────────────────────────────────────────┼────────────────┼──────────┼───────────────────┼───────────────┼─────────────────────────────────────────────┤
+│ Microsoft.AspNetCore.App.Runtime.linux-musl-x64 │ CVE-2023-33170 │ HIGH     │ 6.0.20            │ 7.0.9         │ race condition in Core SignInManager<TUser> │
+│                                                 │                │          │                   │               │ PasswordSignInAsync method                  │
+│                                                 │                │          │                   │               │ https://avd.aquasec.com/nvd/cve-2023-33170  │
+└─────────────────────────────────────────────────┴────────────────┴──────────┴───────────────────┴───────────────┴─────────────────────────────────────────────┘
+
+##Scan an AWS environment for cloud configuration vulnerabilities
+AWS Config
+
+### Example vulnerability
+Instance is configured to allow users to log in with root credentials over SSH, without having to use a command authenticated by a public key. This increases the likelihood of a successful brute-force attack.

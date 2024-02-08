@@ -1,0 +1,23 @@
+Research and analyze which of the vulnerabilities appear to be related to the code that was deployed for the environment in this project.
+
+1. VPC default security groups should not allow inbound or outbound traffic
+
+[EC2.2] A VPC comes with a default security group whose initial settings deny all inbound traffic, allow all outbound traffic, and allow all traffic between instances assigned to the security group. If you don't specify a security group when you launch an instance, the instance is automatically assigned to this default security group. It is recommended that the default security group restrict all traffic
+
+Remediation
+To remediate this issue, start by creating new least-privilege security groups. For instructions, see Create a security group in the Amazon VPC User Guide. Then, assign the new security groups to your EC2 instances. For instructions, see Change an instance's security group in the Amazon EC2 User Guide for Linux Instances.
+
+After you assign the new security groups to your resources, remove all inbound and outbound rules from the default security groups. For instructions, see Delete security group rules in the Amazon VPC User Guide.
+
+
+
+2.Security groups should not allow ingress from 0.0.0.0/0 or ::/0 to port 22
+
+[EC2.13] Security groups provide stateful filtering of ingress/egress network traffic to AWS resources. It is recommended that no security group allows unrestricted ingress access to port 22.
+
+Remediation
+To prohibit ingress to port 22, remove the rule that allows such access for each security group associated with a VPC. For instructions, see Update security group rules in the Amazon VPC User Guide. After selecting a security group in the Amazon VPC Console, choose Actions, Edit inbound rules. Remove the rule that allows access to port 22.
+
+
+---
+Bonus - provide recommendations on how to remediate the vulnerabilities.
